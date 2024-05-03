@@ -7,7 +7,7 @@ const Home = lazy(async () =>
 export function Router() {
   return (
     <Routes>
-      <Route path="/" Component={Home} />
+      <Route path="/localiza-juri" Component={Home} />
     </Routes>
   );
 }

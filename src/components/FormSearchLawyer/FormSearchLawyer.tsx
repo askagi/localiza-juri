@@ -48,7 +48,7 @@ export function FormSearchLawyer() {
           }),
         }}
         components={{ MenuList, Option: OptionExperts }}
-        placeholder="Selecione especialidades juridicas"
+        placeholder="Especialidades jurídica"
       />
 
       <Select
@@ -65,7 +65,7 @@ export function FormSearchLawyer() {
           Control: ControlCity,
           Input: () => null,
         }}
-        placeholder="Selecione cidades"
+        placeholder="Cidade"
       />
 
       <Button className="row col-12 py-3" variant="success">

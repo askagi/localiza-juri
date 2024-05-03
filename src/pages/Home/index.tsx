@@ -24,7 +24,7 @@ export function Home() {
               <Row className="justify-content-center px-5">
                 <div className="home__form-text col-12 mb-5">
                   <h1 className="text-success display-4 fw-semibold ">
-                    Encontre agora mesmo um especialista juridico
+                    Encontre agora mesmo um especialista jurídico
                   </h1>
                   <h4 className="text-muted ps-1">
                     Aqui você encontra o júri ideal para sua demanda
