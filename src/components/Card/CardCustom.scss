@@ -1,0 +1,12 @@
+.cardCustom {
+  & .card {
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    border-color: rgba(10, 10, 10, 0.07);
+    &:hover {
+      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+      transform: translate(0.7rem, -0.2rem);
+      //   transform: scale(1.02);
+    }
+  }
+}

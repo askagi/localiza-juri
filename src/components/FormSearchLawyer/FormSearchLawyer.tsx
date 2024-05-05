@@ -1,5 +1,5 @@
-import { Button, Form, Stack } from "react-bootstrap";
-import { GoLaw, GoSearch } from "react-icons/go";
+import { Button, Col, Form } from "react-bootstrap";
+import { GoFilter, GoLaw } from "react-icons/go";
 import { LuMapPin } from "react-icons/lu";
 import Select, {
   ControlProps,
@@ -8,6 +8,7 @@ import Select, {
   components,
 } from "react-select";
 import { SelectItem } from "../../types/Global.types";
+import "./FormSearchLawyer.scss";
 import { useFormSerachLawyerIds } from "./useFormSerachLawyerIds";
 
 export function FormSearchLawyer() {
@@ -32,52 +33,39 @@ export function FormSearchLawyer() {
   ];
 
   return (
-    <Form className="col">
-      <Select
-        className="row col-12 mb-3"
-        isMulti
-        id={expertsId}
-        name="experts"
-        options={experts}
-        styles={{
-          control: (styles) => ({
-            ...styles,
-            width: "100%",
-            height: "52px",
-            // marginBottom: "15px",
-          }),
-        }}
-        components={{ MenuList, Option: OptionExperts }}
-        placeholder="Especialidades jurídica"
-      />
+    <Form className="formSearchLawyer row m-0 gap-0 p-0">
+      <Col md={7} sm={12}>
+        <Select
+          classNamePrefix={"formSearchLawyer__select"}
+          isMulti
+          id={expertsId}
+          name="experts"
+          options={experts}
+          components={{ MenuList, Option: OptionExperts }}
+          placeholder="Especialidades jurídica"
+        />
+      </Col>
+      <Col md={4} sm={12}>
+        <Select
+          classNamePrefix={"formSearchLawyer__select"}
+          id={cityId}
+          name="cities"
+          options={cities}
+          components={{
+            MenuList,
+            Option: OptionCity,
+            Control: ControlCity,
+          }}
+          placeholder="Cidade"
+        />
+      </Col>
 
-      <Select
-        className="row col-12 mb-3"
-        id={cityId}
-        name="cities"
-        options={cities}
-        styles={{
-          control: (styles) => ({ ...styles, width: "100%", height: "52px" }),
-        }}
-        components={{
-          MenuList,
-          Option: OptionCity,
-          Control: ControlCity,
-          Input: () => null,
-        }}
-        placeholder="Cidade"
-      />
-
-      <Button className="row col-12 py-3" variant="success">
-        <Stack
-          direction="horizontal"
-          className="align-items-center justify-content-center"
-          gap={2}
-        >
-          <GoSearch size={24} />
-          Pesquisar
-        </Stack>
-      </Button>
+      <Col md={1} sm={12}>
+        <Button className="formSearchLawyer__btn" size="sm" variant="primary">
+          <GoFilter />
+          <span>Filtrar</span>
+        </Button>
+      </Col>
     </Form>
   );
 }
@@ -104,7 +92,7 @@ const OptionCity = (props: OptionProps) => {
 
 const ControlCity = ({ children, ...props }: ControlProps) => {
   return (
-    <components.Control className="FormSearchLawyer ps-2" {...props}>
+    <components.Control className=" ps-2" {...props}>
       <LuMapPin />
       {children}
     </components.Control>
