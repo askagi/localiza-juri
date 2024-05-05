@@ -1,13 +1,14 @@
 import { Badge, Card, Col, Row } from "react-bootstrap";
 import "./CardCustom.scss";
-type CardCustomProps = {
+export type CardCustomProps = {
   user: {
+    id: string;
     name: string;
-    description?: string;
     image?: string;
-    city?: string;
-    state?: string;
-    specialties?: string[];
+    // description?: string;
+    // city?: string;
+    // state?: string;
+    // specialties?: string[];
   };
 };
 
@@ -20,8 +21,8 @@ export function CardCustom({ user }: CardCustomProps) {
         <Row>
           <Col sm={4} style={{ height: "9.5rem" }}>
             <Card.Img
-              style={{ height: "9.3rem" }}
-              src={user?.picture?.large}
+              style={{ height: "9.5rem" }}
+              src={user?.image}
               //   src="https://source.unsplash.com/random?lawyer?profile?face"
               className="img-fluid  d-md-block object-fit-cover"
               alt="..."
@@ -29,7 +30,7 @@ export function CardCustom({ user }: CardCustomProps) {
           </Col>
           <Col sm={8}>
             <Card.Body className="p-2">
-              <Card.Title className="mb-3">{`${user?.name?.first} ${user?.name?.last}`}</Card.Title>
+              <Card.Title className="mb-3">{user?.name}</Card.Title>
               <Card.Subtitle className="card-subtitle mb-2 text-muted d-flex gap-1">
                 {["Administrativo", "Imobiliario"].map((specialty) => (
                   <Badge key={specialty} className="bg-secondary">
