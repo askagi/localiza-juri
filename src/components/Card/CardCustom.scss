@@ -1,17 +1,42 @@
 .cardCustom {
-  & .card {
+  width: 100%;
+  &__card {
+    height: 9.5rem;
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+    // background: rebeccapurple;
+    padding: 0.5rem;
+
+    // border: 0.1rem solid rgba(10, 10, 10, 0.07);
     cursor: pointer;
-    transition: all 0.2s;
+    border-radius: 10px;
+    transition: all 0.5s;
     // border-color: rgba(10, 10, 10, 0.07);
     border: none;
-    outline: 0.1rem solid rgba(10, 10, 10, 0.07);
+    outline: 0.1rem solid rgba(10, 10, 10, 0.03);
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 
     &:hover {
-      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-
-      outline: 0.1rem solid rgb(168, 205, 159);
-      // transform: translate(0.1rem, -0.2rem);
+      box-shadow: rgba(149, 157, 165, 0.5) 0px 8px 24px;
+      // outline: 0.1rem solid rgb(168, 205, 159);
+      transform: translate(0.5rem, -0.5rem);
       //   transform: scale(1.02);
     }
+  }
+
+  &__img-box {
+    // background: yellow;
+    & .img-fluid {
+      width: 8rem;
+      min-width: 6rem;
+      height: 8.5rem;
+      border-radius: 10px;
+    }
+  }
+
+  &__body {
+    // background: seagreen;
+    // padding: 0.5rem;
   }
 }

@@ -1,17 +1,19 @@
 import { Suspense, useEffect, useState } from "react";
-import { Container, Navbar, Row } from "react-bootstrap";
-import { GoLaw } from "react-icons/go";
-import { CardCustom, CardCustomProps } from "../../components/Card/CardCustom";
+import { Col, Container, Row } from "react-bootstrap";
+import { CardCustom } from "../../components/Card/CardCustom";
 import { FormSearchLawyer } from "../../components/FormSearchLawyer/FormSearchLawyer";
+import { NavbarCustom } from "../../components/Navbar/NavbarCustom";
+import { userMock } from "../../dataBase/user.mock";
+import { User } from "../../types/User.type";
 import "./Home.scss";
-type User = CardCustomProps["user"];
+
 export function Home() {
   // fetch('https://randomuser.me/api/?results=10&nat=br')
-  const [user, setUsers] = useState<User[]>([]);
+  const [user, setUsers] = useState<User[]>(userMock);
   async function getUsers() {
     try {
       const response = await fetch(
-        "https://randomuser.me/api/?results=10&nat=br&state=bahia"
+        "https://randomuser.me/api/?results=100&nat=br&state=bahia"
       );
       const data = await response.json();
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -22,7 +24,7 @@ export function Home() {
       }));
       console.log("formated", formatedData);
 
-      setUsers(formatedData);
+      setUsers([...user, ...formatedData]);
     } catch (error) {
       console.log(error);
     }
@@ -34,14 +36,7 @@ export function Home() {
   return (
     <Suspense fallback={<h5>Carregando...</h5>}>
       <div className=" vh-100">
-        <Navbar className="bg-body-secondary ">
-          <Container>
-            <Navbar.Brand href="#home" className="m-auto">
-              <GoLaw size={42} />
-              <strong className="ms-3">Localiza júri</strong>
-            </Navbar.Brand>
-          </Container>
-        </Navbar>
+        <NavbarCustom authenticated />
         <Container fluid>
           <Row className="home__apresentation">
             <span className="display-5 text-center fw-normal  ">
@@ -52,9 +47,16 @@ export function Home() {
             <Row className="home__form">
               <FormSearchLawyer />
             </Row>
-            <Row className="home__list">
+          </Container>
+          {/* <hr /> */}
+          <Container>
+            <Row className="home__list row-cols-1 row-cols-md-2 g-4">
               {user.length > 0 &&
-                user.map((user) => <CardCustom key={user.id} user={user} />)}
+                user.map((user) => (
+                  <Col key={user.id}>
+                    <CardCustom user={user} />
+                  </Col>
+                ))}
             </Row>
           </Container>
         </Container>

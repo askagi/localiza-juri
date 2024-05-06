@@ -1,83 +1,62 @@
-import { Badge, Card, Col, Row } from "react-bootstrap";
+import { faker } from "@faker-js/faker";
+import { Badge } from "react-bootstrap";
+import { GoStar, GoStarFill } from "react-icons/go";
+import { LuMapPin } from "react-icons/lu";
+import { User } from "../../types/User.type";
 import "./CardCustom.scss";
 export type CardCustomProps = {
-  user: {
-    id: string;
-    name: string;
-    image?: string;
-    // description?: string;
-    // city?: string;
-    // state?: string;
-    // specialties?: string[];
-  };
+  user: User;
 };
 
 export function CardCustom({ user }: CardCustomProps) {
   console.log(user);
 
   return (
-    <Col md={6} sm={12} className="cardCustom">
-      <Card className="mb-3" style={{ height: "9.5rem" }}>
-        <Row>
-          <Col sm={4} style={{ height: "9.5rem" }}>
-            <Card.Img
-              style={{ height: "9.5rem" }}
-              src={user?.image}
-              //   src="https://source.unsplash.com/random?lawyer?profile?face"
-              className="img-fluid  d-md-block object-fit-cover"
-              alt="..."
-            />
-          </Col>
-          <Col sm={8}>
-            <Card.Body className="p-2">
-              <Card.Title className="mb-3">{user?.name}</Card.Title>
-              <Card.Subtitle className="card-subtitle mb-2 text-muted d-flex gap-1">
-                {["Administrativo", "Imobiliario"].map((specialty) => (
-                  <Badge key={specialty} className="bg-secondary">
+    <div className="cardCustom">
+      <div className="cardCustom__card">
+        <div className="cardCustom__img-box">
+          <img
+            src={user?.image}
+            //   src="https://source.unsplash.com/random?lawyer?profile?face"
+            className="img-fluid  d-md-block object-fit-cover"
+            alt="..."
+          />
+        </div>
+        <div className="cardCustom__body">
+          <div className="p-0 p-md-2">
+            <h5 className="">{user?.name}</h5>
+            <div className=" mb-md-2 text-muted d-flex gap-1">
+              {user?.specialties &&
+                user?.specialties?.map((specialty) => (
+                  <Badge key={specialty} pill className="bg-secondary">
                     {specialty}
                   </Badge>
                 ))}
-                {/* <Badge className="bg-secondary">Administrativo</Badge>
+              {/* <Badge className="bg-secondary">Administrativo</Badge>
                 <Badge bg="secondary">Imobiliario</Badge> */}
-              </Card.Subtitle>
-              <Card.Text className="card-text">
-                This is a wider card with supporting text below as a natural
-              </Card.Text>
-              {/* <p className="card-text">
-                <small className="text-body-secondary">
-                  Last updated 3 mins ago
-                </small>
-              </p> */}
-            </Card.Body>
-          </Col>
-        </Row>
-      </Card>
-      {/* <div className="card  mb-3 ms-5 m-0 p-0" style={{ maxWidth: "540px" }}>
-        <div className="row g-0 m-0 p-0">
-          <div className="col-md-4">
-            <img
-              src="https://source.unsplash.com/random?profile"
-              className="img-fluid rounded-start"
-              alt="..."
-            />
-          </div>
-          <div className="col-md-8">
-            <div className="card-body">
-              <h5 className="card-title">Card title</h5>
-              <p className="card-text">
-                This is a wider card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
-              </p>
-              <p className="card-text">
-                <small className="text-body-secondary">
-                  Last updated 3 mins ago
-                </small>
-              </p>
             </div>
+            {/* <p className="">Uma breve descrição...</p> */}
+            <p className="card-text">
+              <span className="text-warning">
+                <GoStarFill />
+                <GoStarFill />
+                <GoStarFill />
+                <GoStarFill />
+                <GoStar />
+              </span>
+              <small className="text-body-secondary ms-2">
+                {faker.number.int({ min: 5, max: 800 })} avaliacões
+              </small>
+            </p>
+            <p className="card-text">
+              <small className="text-muted ms-2 d-flex align-items-center gap-1 ">
+                <LuMapPin size={16} color="#333333" />
+                {faker.number.int({ min: 5, max: 800 })} metros de você
+              </small>
+            </p>
           </div>
         </div>
-      </div> */}
-    </Col>
+      </div>
+    </div>
   );
 }
