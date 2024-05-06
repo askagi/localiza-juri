@@ -2,6 +2,7 @@ import { Suspense, useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { CardCustom } from "../../components/Card/CardCustom";
 import { FormSearchLawyer } from "../../components/FormSearchLawyer/FormSearchLawyer";
+import { Loading } from "../../components/Loading/Loading";
 import { NavbarCustom } from "../../components/Navbar/NavbarCustom";
 import { userMock } from "../../dataBase/user.mock";
 import { User } from "../../types/User.type";
@@ -34,7 +35,7 @@ export function Home() {
     getUsers();
   }, []);
   return (
-    <Suspense fallback={<h5>Carregando...</h5>}>
+    <Suspense fallback={<Loading />}>
       <div className=" vh-100">
         <NavbarCustom authenticated />
         <Container fluid>

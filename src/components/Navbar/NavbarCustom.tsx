@@ -13,7 +13,7 @@ export function NavbarCustom({ authenticated }: NavbarCustomProps) {
       <Container>
         <Navbar.Brand href="#home" className="m-auto">
           <GoLaw size={42} />
-          <strong className="ms-3">Localiza júri</strong>
+          <strong className="ms-3">Localiza juri</strong>
         </Navbar.Brand>
         {authenticated && (
           <div>
