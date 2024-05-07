@@ -21,7 +21,7 @@ export function Login() {
                     Encontre agora mesmo um especialista jurídico
                   </h1>
                   <h4 className="text-muted ps-1">
-                    Aqui você encontra o júri ideal para sua demanda
+                    Aqui você encontra o juri ideal para sua demanda
                   </h4>
                 </div> */}
                 <div className="home__form-text col-12 mb-5">
