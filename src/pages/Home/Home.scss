@@ -4,29 +4,6 @@
     &-text {
     }
   }
-
-  &__apresentation {
-    // flex: 1;
-    // display: flex;
-    // flex-direction: column;
-    // justify-content: center;
-    // align-items: center;
-    // background: #496989;
-    // background-attachment: fixed;
-    background: -webkit-linear-gradient(187deg, #496989 0%, #e2f4c5 100%);
-    background: linear-gradient(187deg, #496989 0%, #e2f4c5 100%);
-    height: 65vh;
-    padding: 1rem;
-  }
-
-  &__float-form {
-    position: absolute;
-    width: 30%;
-    height: 55vh;
-    top: 15%;
-    left: 5%;
-    z-index: 999;
-  }
   // .leaflet-layer,
   // .leaflet-control-zoom-in,
   // .leaflet-control-zoom-out,

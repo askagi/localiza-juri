@@ -1,4 +1,18 @@
-.mapLawyers {
+.map-lawyers {
   width: 100vw;
   height: 90vh;
+
+  &__float-form {
+    position: absolute;
+    width: 30%;
+    height: 60vh;
+    top: 15%;
+    left: 5%;
+    z-index: 999;
+
+    background: rgba(255, 255, 255, 0.85);
+    -webkit-backdrop-filter: blur(1px);
+    backdrop-filter: blur(1px);
+    border: 1px solid rgba(255, 255, 255, 0.425);
+  }
 }

@@ -4,42 +4,50 @@ import { ListLawyersCard } from "../../components/ListLawyersCard/ListLawyersCar
 import { Loading } from "../../components/Loading/Loading";
 import { MapLawyers } from "../../components/MapLawyers/MapLawyers";
 import { NavbarCustom } from "../../components/Navbar/NavbarCustom";
-import { userMock } from "../../dataBase/user.mock";
-import { User } from "../../types/User.type";
 import "./Home.scss";
 
+import userData from "../../dataBase/data.json";
+import { userMock } from "../../dataBase/user.mock";
+
+export type Position = {
+  latitude: number;
+  longitude: number;
+};
 export function Home() {
   // fetch('https://randomuser.me/api/?results=10&nat=br')
-  const [users, setUsers] = useState<User[]>(userMock);
+  const [users, setUsers] = useState([
+    ...userMock,
+    ...userData.results
+      .filter((user) => user.location.state === "Bahia")
+      .map((user: any) => ({
+        id: user.login.uuid,
+        name: `${user.name.first} ${user.name.last}`,
+        image: user.picture.large,
+        city: user.location.city,
+        state: user.location.state,
+        position: {
+          lat: Number(user.location.coordinates.latitude),
+          lng: Number(user.location.coordinates.longitude),
+        },
+      })),
+  ]);
   const [viewMode, setViewMode] = useState<"list" | "map">("list");
+  const [position, setPosition] = useState({ latitude: 0, longitude: 0 });
 
   function handleViewMode(mode: "list" | "map") {
     setViewMode(mode);
   }
 
-  async function getUsers() {
-    try {
-      const response = await fetch(
-        "https://randomuser.me/api/?results=100&nat=br"
-      );
-      const data = await response.json();
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const formatedData: User[] = data.results.map((user: any) => ({
-        id: user.login.uuid,
-        name: `${user.name.first} ${user.name.last}`,
-        image: user.picture.large,
-      }));
-
-      setUsers([...users, ...formatedData]);
-    } catch (error) {
-      console.log(error);
-    }
+  function getPositionSuccess(position: any) {
+    const { latitude, longitude } = position.coords;
+    setPosition({ latitude, longitude });
+    console.log(position);
   }
+  // navigator.geolocation.getCurrentPosition(getPositionSuccess);
 
   useEffect(() => {
-    getUsers();
+    navigator.geolocation.watchPosition(getPositionSuccess);
   }, []);
-
   return (
     <Suspense fallback={<Loading />}>
       <div className="home vh-100">
@@ -49,8 +57,12 @@ export function Home() {
           viewMode={viewMode}
         />
         <Container fluid>
-          {viewMode === "map" && <MapLawyers />}
-          {viewMode === "list" && <ListLawyersCard users={users} />}
+          {viewMode === "map" && (
+            <MapLawyers users={users} userPosition={position} />
+          )}
+          {viewMode === "list" && users.length > 0 && (
+            <ListLawyersCard users={users} />
+          )}
         </Container>
       </div>
     </Suspense>
