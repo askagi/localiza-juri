@@ -36,7 +36,10 @@ export function NavbarCustom({
         >
           <Offcanvas.Header closeButton>
             <Offcanvas.Title id={`offcanvasNavbarLabel-expand`}>
-              Offcanvas
+              <Navbar.Brand href="#home" className="">
+                <GoLaw size={42} />
+                <strong className="ms-3">Localiza juri</strong>
+              </Navbar.Brand>
             </Offcanvas.Title>
           </Offcanvas.Header>
           <Offcanvas.Body>
