@@ -18,7 +18,11 @@ export function NavbarCustom({
     <Navbar className="bg-body-secondary ">
       <Container>
         {togglViewMode && (
-          <Stack direction="horizontal" gap={3} className="m-0">
+          <Stack
+            direction="horizontal"
+            gap={3}
+            className="m-0 d-none d-md-block"
+          >
             <ToggleButton
               id="listMode"
               type="checkbox"

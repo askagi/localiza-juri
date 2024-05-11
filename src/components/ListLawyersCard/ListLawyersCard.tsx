@@ -2,6 +2,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import { User } from "../../types/User.type";
 import { CardCustom } from "../Card/CardCustom";
 import { FormSearchLawyer } from "../FormSearchLawyer/FormSearchLawyer";
+import "./listLawyersCard.scss";
 
 type ListLawyersCardProps = {
   users: User[];
@@ -9,7 +10,7 @@ type ListLawyersCardProps = {
 
 export function ListLawyersCard({ users }: ListLawyersCardProps) {
   return (
-    <div>
+    <div className="listLawyerCard">
       <Container>
         <Row className="home__form">
           <FormSearchLawyer />

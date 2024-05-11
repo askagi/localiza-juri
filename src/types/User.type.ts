@@ -11,7 +11,11 @@ export type User = {
   name: string;
   image?: string;
   // description?: string;
-  // city?: string;
-  // state?: string;
+  city?: string;
+  state?: string;
+  position?: {
+    lat: number;
+    lng: number;
+  };
   specialties?: Specialties[];
 };
