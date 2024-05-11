@@ -15,7 +15,7 @@ export type Position = {
 };
 export function Home() {
   // fetch('https://randomuser.me/api/?results=10&nat=br')
-  const [users, setUsers] = useState([
+  const users = [
     ...userMock,
     ...userData.results
       .filter((user) => user.location.state === "Bahia")
@@ -30,7 +30,7 @@ export function Home() {
           lng: Number(user.location.coordinates.longitude),
         },
       })),
-  ]);
+  ];
   const [viewMode, setViewMode] = useState<"list" | "map">("list");
   const [position, setPosition] = useState({ latitude: 0, longitude: 0 });
 
