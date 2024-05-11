@@ -21,7 +21,7 @@ export function NavbarCustom({
           <Stack
             direction="horizontal"
             gap={3}
-            className="m-0 d-none d-md-block"
+            className="m-0 d-none d-md-flex"
           >
             <ToggleButton
               id="listMode"
