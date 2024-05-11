@@ -47,7 +47,7 @@ export function Home() {
 
   useEffect(() => {
     navigator.geolocation.watchPosition(getPositionSuccess);
-  }, []);
+  }, [position]);
   return (
     <Suspense fallback={<Loading />}>
       <div className="home vh-100">

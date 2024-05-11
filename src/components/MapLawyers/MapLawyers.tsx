@@ -41,7 +41,7 @@ export function MapLawyers({ userPosition, users }: MapLawyersProps) {
 
   return (
     <Row className="map-lawyers  bg-body-secondary p-0">
-      <div className="map-lawyers__float-form border rounded rounded-3 ">
+      <div className="map-lawyers__float-form border rounded rounded-3 d-none d-md-block">
         <Stack gap={3} className=" h-100 py-5 px-4">
           <h4 className="mb-5">
             Encontre o especialista ideal para sua necessidade.
