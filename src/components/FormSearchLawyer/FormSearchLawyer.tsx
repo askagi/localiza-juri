@@ -26,8 +26,7 @@ export function FormSearchLawyer() {
   const cities: SelectItem[] = [
     { label: "Todos", value: "all" },
     { label: "Alagoinhas", value: "alagoinhas" },
-    { label: "Aramari", value: "aramari" },
-    { label: "Cardial da Silva", value: "cardial_da_silva" },
+    { label: "Cardeal da Silva", value: "cardeal_da_silva" },
     { label: "Entre Rios", value: "entre_rios" },
     { label: "Esplanada", value: "esplanada" },
   ];
@@ -38,11 +37,14 @@ export function FormSearchLawyer() {
         <Col md={7} sm={12}>
           <Select
             classNamePrefix={"formSearchLawyer__select"}
-            isMulti
             id={expertsId}
             name="experts"
             options={experts}
-            components={{ MenuList, Option: OptionExperts }}
+            components={{
+              MenuList,
+              Option: OptionExperts,
+              Control: ControlLawyer,
+            }}
             placeholder="Especialidades jurídica"
           />
         </Col>
@@ -110,6 +112,15 @@ const ControlCity = ({ children, ...props }: ControlProps) => {
   return (
     <components.Control className=" ps-2" {...props}>
       <LuMapPin color="#333333" />
+      {children}
+    </components.Control>
+  );
+};
+
+const ControlLawyer = ({ children, ...props }: ControlProps) => {
+  return (
+    <components.Control className=" ps-2" {...props}>
+      <GoLaw color="#333333" />
       {children}
     </components.Control>
   );

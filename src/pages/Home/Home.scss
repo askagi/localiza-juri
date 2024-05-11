@@ -4,17 +4,18 @@
     &-text {
     }
   }
+  // .leaflet-layer,
+  // .leaflet-control-zoom-in,
+  // .leaflet-control-zoom-out,
+  // .leaflet-control-attribution {
+  //   filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%);
+  // }
+}
 
-  &__apresentation {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: #496989;
-    background-attachment: fixed;
-    background: -webkit-linear-gradient(187deg, #496989 0%, #e2f4c5 100%);
-    background: linear-gradient(187deg, #496989 0%, #e2f4c5 100%);
-    height: 15rem;
-  }
+.teste {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 10%;
+  height: 100%;
 }

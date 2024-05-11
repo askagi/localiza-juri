@@ -9,8 +9,6 @@ export type CardCustomProps = {
 };
 
 export function CardCustom({ user }: CardCustomProps) {
-  console.log(user);
-
   return (
     <div className="cardCustom">
       <div className="cardCustom__card">
