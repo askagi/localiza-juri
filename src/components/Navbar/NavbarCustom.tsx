@@ -24,6 +24,10 @@ export function NavbarCustom({
   return (
     <Navbar className="bg-body-secondary" expand="sm">
       <Container>
+        <Navbar.Brand href="#home" className="">
+          <GoLaw size={42} />
+          <strong className="ms-3">Localiza juri</strong>
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls={`offcanvasNavbar-expand`} />
         <Navbar.Offcanvas
           id={`offcanvasNavbar-expand`}
@@ -38,7 +42,11 @@ export function NavbarCustom({
           <Offcanvas.Body>
             <Nav className="justify-content-end flex-grow-1 pe-3">
               {togglViewMode && (
-                <Stack direction="horizontal" gap={3} className="m-0 ">
+                <Stack
+                  // direction="horizontal"
+                  gap={3}
+                  className="m-0 flex-sm-column flex-md-row justify-content-end me-md-5 "
+                >
                   <ToggleButton
                     id="listMode"
                     type="checkbox"
@@ -61,25 +69,21 @@ export function NavbarCustom({
                   </ToggleButton>
                 </Stack>
               )}
+              <div>
+                {authenticated && (
+                  <div>
+                    <Link
+                      className="text-black fw-semibold btn btn-outline-secondary w-100 mt-3 mt-md-0"
+                      to={ROUTER.login}
+                    >
+                      Sair <GoArrowRight size={20} />
+                    </Link>
+                  </div>
+                )}
+              </div>
             </Nav>
           </Offcanvas.Body>
         </Navbar.Offcanvas>
-        <Navbar.Brand href="#home" className="">
-          <GoLaw size={42} />
-          <strong className="ms-3">Localiza juri</strong>
-        </Navbar.Brand>
-        <div>
-          {authenticated && (
-            <div>
-              <Link
-                className="text-black fw-semibold btn btn-outline-secondary btn-sm"
-                to={ROUTER.login}
-              >
-                Sair <GoArrowRight size={20} />
-              </Link>
-            </div>
-          )}
-        </div>
       </Container>
     </Navbar>
   );
