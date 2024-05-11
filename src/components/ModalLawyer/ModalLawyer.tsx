@@ -50,7 +50,7 @@ export function ModalLawyer({ user, show, handleClose }: ModalLawyerProps) {
                 Enviar mensagem
               </a>
             </Stack>
-            <Button variant="link">adv@email.com</Button>
+            <Button variant="link">adv@localiza_juri.com</Button>
           </Col>
         </Row>
       </Modal.Body>
